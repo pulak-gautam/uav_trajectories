@@ -71,11 +71,11 @@ int main(int argc, char **argv)
   }
 
   mav_trajectory_generation::Vertex::Vector vertices;
-  const int dimension = 3;
+  const int dimension = 4;
   const int derivative_to_optimize = mav_trajectory_generation::derivative_order::JERK;
 
   // create vertices with their constraints
-  auto input = load_csv<Matrix<double, Dynamic, 3> >(inputFile);
+  auto input = load_csv<Matrix<double, Dynamic, 4> >(inputFile);
 
   if (input.rows() < 2) {
     std::cerr << "Not enough datapoints given!" << std::endl;

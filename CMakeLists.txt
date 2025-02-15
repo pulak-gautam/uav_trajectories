@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 find_package(Eigen3 REQUIRED NO_MODULE)
 find_package(Boost 1.58 REQUIRED COMPONENTS program_options filesystem)
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(NLPOPT REQUIRED nlopt nlopt_cxx)
+pkg_check_modules(NLPOPT REQUIRED nlopt)
 
 # Additional include folders
 include_directories(
@@ -34,6 +34,8 @@ add_executable(genTrajectory
 )
 target_link_libraries(genTrajectory
   ${Boost_LIBRARIES}
+  Boost::program_options
+  Boost::filesystem
   mav_trajectory_generation
   glog
   nlopt
